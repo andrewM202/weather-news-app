@@ -91,14 +91,14 @@
                 </header>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
-                        <a href="{{ $news_data['url1'] }}"><h3>{{ $news_data['name1'] ?? 'Invalid Country' }}</h3></a>
+                        <a href="{{ $news_data['url1'] }}" target="_blank"><h3>{{ $news_data['name1'] ?? 'Invalid Country' }}</h3></a>
                     </header>
                     <p>{{ $news_data['title1'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image1'] ?? 'Null' }}" alt="News Image"></img>
                 </div>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
-                        <a href="{{ $news_data['url2'] }}"><h3>{{ $news_data['name2'] ?? 'Invalid Country' }}</h3></a>
+                        <a href="{{ $news_data['url2'] }}" target="_blank"><h3>{{ $news_data['name2'] ?? 'Invalid Country' }}</h3></a>
                     </header>
                     <p>{{ $news_data['title2'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image2'] ?? 'Null' }}" alt="News Image"></img>
@@ -107,14 +107,14 @@
             <div class="row d-flex justify-content-around">
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
-                        <a href="{{ $news_data['url3'] }}"><h3>{{ $news_data['name3'] ?? 'Invalid Country' }}</h3></a>
+                        <a href="{{ $news_data['url3'] }}" target="_blank"><h3>{{ $news_data['name3'] ?? 'Invalid Country' }}</h3></a>
                     </header>
                     <p>{{ $news_data['title3'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image3'] ?? 'Null' }}" alt="News Image"></img>
                 </div>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
-                        <a href="{{ $news_data['url4'] }}"><h3>{{ $news_data['name4'] ?? 'Invalid Country' }}</h3></a>
+                        <a href="{{ $news_data['url4'] }}" target="_blank"><h3>{{ $news_data['name4'] ?? 'Invalid Country' }}</h3></a>
                     </header>
                     <p>{{ $news_data['title4'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image4'] ?? 'Null' }}" alt="News Image"></img>
@@ -123,14 +123,14 @@
             <div class="row d-flex justify-content-around">
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
-                        <a href="{{ $news_data['url5'] }}"><h3>{{ $news_data['name5'] ?? 'Invalid Country' }}</h3></a>
+                        <a href="{{ $news_data['url5'] }}" target="_blank"><h3>{{ $news_data['name5'] ?? 'Invalid Country' }}</h3></a>
                     </header>
                     <p>{{ $news_data['title5'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image5'] ?? 'Null' }}" alt="News Image"></img>
                 </div>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
-                        <a href="{{ $news_data['url6'] }}"><h3>{{ $news_data['name6'] ?? 'Invalid Country' }}</h3></a>
+                        <a href="{{ $news_data['url6'] }}" target="_blank"><h3>{{ $news_data['name6'] ?? 'Invalid Country' }}</h3></a>
                     </header>
                     <p>{{ $news_data['title6'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image6'] ?? 'Null' }}" alt="News Image"></img>
@@ -139,14 +139,14 @@
             <div class="row d-flex justify-content-around">
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
-                        <a href="{{ $news_data['url7'] }}"><h3>{{ $news_data['name7'] ?? 'Invalid Country' }}</h3></a>
+                        <a href="{{ $news_data['url7'] }}" target="_blank"><h3>{{ $news_data['name7'] ?? 'Invalid Country' }}</h3></a>
                     </header>
                     <p>{{ $news_data['title6'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image7'] ?? 'Null' }}" alt="News Image"></img>
                 </div>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
-                        <a href="{{ $news_data['url8'] }}"><h3>{{ $news_data['name8'] ?? 'Invalid Country' }}</h3></a>
+                        <a href="{{ $news_data['url8'] }}" target="_blank"><h3>{{ $news_data['name8'] ?? 'Invalid Country' }}</h3></a>
                     </header>
                     <p>{{ $news_data['title7'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image8'] ?? 'Null' }}" alt="News Image"></img>
