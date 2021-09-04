@@ -11,21 +11,21 @@
   align-items: center;
 }
 
-header {
+body > header {
   width: 100vw;
   height: auto;
   background-color: #1E3163;
   font-size: 1.4rem;
 }
-header nav {
+body > header nav {
   width: 100vw;
   min-height: 75px;
 }
-header div.title {
+body > header div.title {
   width: 100vw;
   min-height: 75px;
 }
-header div.title h1 {
+body > header div.title h1 {
   margin-top: 10px;
   color: white;
   font-size: 1.8rem;
@@ -49,16 +49,36 @@ main {
   padding: 100px 0;
   background: linear-gradient(#9198e5, white, #9198e5);
 }
-.containers .test {
+.containers .news {
   background-color: #1e3162;
   margin: 50px 50px;
   min-height: 400px;
   min-width: 400px;
   max-width: 600px;
-  display: flex;
-  justify-content: center;
   align-items: center;
   color: white;
+}
+.containers .news header {
+  margin: 10px;
+  text-decoration: underline;
+}
+.containers .news header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.containers .news p {
+  padding: 0 15px;
+  font-size: 1.3rem;
+  height: 25%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.containers .news img {
+  width: 90%;
+  height: 50%;
 }
 .containers .row {
   --bs-gutter-x: 0;

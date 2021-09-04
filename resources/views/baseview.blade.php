@@ -66,7 +66,7 @@
                             {!! $location ?? 'Invalid City Name' !!}
                         </h4>
                 <ul class="list-group">
-                    @foreach($data ?? '' as $item)
+                    @foreach($weather_data ?? '' as $item)
                             <li class="list-group-item">{{ $item ?? 'Null' }}</li>
                     @endforeach
                 </ul>
@@ -80,16 +80,52 @@
         </section>
         <section class="container-fluid containers">
             <div class="row d-flex justify-content-around">
-                <div class="col-10 col-sm-5 col-lg-4 test">Test</div>
-                <div class="col-10 col-sm-5 col-lg-4 test">Test</div>
+                <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
+                    <header>
+                        <h3>{{ $news_data['name1'] ?? 'Invalid Country' }}</h3>
+                    </header>
+                    <p>{{ $news_data['title1'] ?? 'Null' }}</p>
+                    <img src="{{ $news_data['image1'] }}"></img>
+                </div>
+                <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
+                    <header>
+                        <h3>{{ $news_data['name2'] ?? 'Invalid Country' }}</h3>
+                    </header>
+                    <p>{{ $news_data['title2'] ?? 'Null' }}</p>
+                    <img src="{{ $news_data['image2'] }}"></img>
+                </div>
             </div>
             <div class="row d-flex justify-content-around">
-                <div class="col-10 col-sm-5 col-lg-4 test">Test</div>
-                <div class="col-10 col-sm-5 col-lg-4 test">Test</div>
+                <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
+                    <header>
+                        <h3>{{ $news_data['name3'] ?? 'Invalid Country' }}</h3>
+                    </header>
+                    <p>{{ $news_data['title3'] ?? 'Null' }}</p>
+                    <img src="{{ $news_data['image3'] }}"></img>
+                </div>
+                <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
+                    <header>
+                        <h3>{{ $news_data['name4'] ?? 'Invalid Country' }}</h3>
+                    </header>
+                    <p>{{ $news_data['title4'] ?? 'Null' }}</p>
+                    <img src="{{ $news_data['image4'] }}"></img>
+                </div>
             </div>
             <div class="row d-flex justify-content-around">
-                <div class="col-10 col-sm-5 col-lg-4 test">Test</div>
-                <div class="col-10 col-sm-5 col-lg-4 test">Test</div>
+                <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
+                    <header>
+                        <h3>{{ $news_data['name5'] ?? 'Invalid Country' }}</h3>
+                    </header>
+                    <p>{{ $news_data['title5'] ?? 'Null' }}</p>
+                    <img src="{{ $news_data['image5'] }}"></img>
+                </div>
+                <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
+                    <header>
+                        <h3>{{ $news_data['name6'] ?? 'Invalid Country' }}</h3>
+                    </header>
+                    <p>{{ $news_data['title6'] ?? 'Null' }}</p>
+                    <img src="{{ $news_data['image6'] }}"></img>
+                </div>
             </div>
         </section>
     </main>
