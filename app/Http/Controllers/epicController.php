@@ -12,7 +12,7 @@ class epicController extends Controller
         $title = "Welcome!";
 
         $city_name = 'Lancaster';
-        $weather_api_key = env('OPENWEATHER_API_KEY=');
+        $weather_api_key = env('OPENWEATHER_API_KEY');
         $weather_api_url = 'http://api.openweathermap.org/data/2.5/weather?&units=imperial&q='.$city_name.'&appid='.$weather_api_key;
 
         // If the city name is invalid and API call fails, throw an error
@@ -108,7 +108,7 @@ class epicController extends Controller
     public function weather($city) {
         // return the weather for a specific city
         $city_name = $city;
-        $weather_api_key = env('OPENWEATHER_API_KEY=');
+        $weather_api_key = env('OPENWEATHER_API_KEY');
         $weather_api_url = 'http://api.openweathermap.org/data/2.5/weather?&units=imperial&q='.$city_name.'&appid='.$weather_api_key;
         // If the city name is invalid and API call fails, throw an error
         try {
