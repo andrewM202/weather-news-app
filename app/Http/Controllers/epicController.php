@@ -44,7 +44,7 @@ class epicController extends Controller
             'weather_desc' => "Weather: ".ucwords($weather_data_raw['weather']['0']['description'], ' '),
             'sunset' => "Sunset: ".date("g:i:s A", $weather_data_raw['sys']['sunset']+$hours_to_adjust),
             'sunrise' => "Sunrise: ".date("g:i:s A", $weather_data_raw['sys']['sunrise']+$hours_to_adjust),
-            'clouds' => "Percent Clouds: ".(string)$weather_data_raw['clouds']['all']."%"
+            'clouds' => "Cloud Cover: ".(string)$weather_data_raw['clouds']['all']."%"
         ];
 
         // Get content for news 
@@ -152,7 +152,7 @@ class epicController extends Controller
             'weather_desc' => "Weather: ".ucwords($weather_data_raw['weather']['0']['description'], ' '),
             'sunset' => "Sunset: ".date("g:i:s A", $weather_data_raw['sys']['sunset']+$hours_to_adjust),
             'sunrise' => "Sunrise: ".date("g:i:s A", $weather_data_raw['sys']['sunrise']+$hours_to_adjust),
-            'clouds' => "Percent Clouds: ".(string)$weather_data_raw['clouds']['all']."%"
+            'clouds' => "Cloud Cover: ".(string)$weather_data_raw['clouds']['all']."%"
         ];
 
         // Get content for news 
