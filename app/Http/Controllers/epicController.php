@@ -141,7 +141,45 @@ class epicController extends Controller
             'clouds' => "Percent Clouds: ".(string)$weather_data_raw['clouds']['all']."%"
         ];
 
-        // returning a single var with "with" method 
-        return view('baseview')->with('weather_data', $weather_data)->with('location', $location);
+        // Get content for news 
+        $news_api_key = env('NEWS_API_KEY');
+        //$news_api_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY';
+        $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$weather_data_raw['sys']['country'].'&apiKey='.$news_api_key;
+        // decode the URL and get the JSON
+        $news_data_raw = json_decode(file_get_contents($news_api_url));
+
+        // return ($news_data_raw->articles['0']->source->name);
+        // return $news_data_raw->articles['0']->content;
+        $news_data = [
+            'name1' => $news_data_raw->articles['0']->source->name,
+            'title1' => $news_data_raw->articles['0']->title,
+            'image1' => $news_data_raw->articles['0']->urlToImage,
+
+            'name2' => $news_data_raw->articles['1']->source->name,
+            'title2' => $news_data_raw->articles['1']->title,
+            'image2' => $news_data_raw->articles['1']->urlToImage,
+
+            'name3' => $news_data_raw->articles['2']->source->name,
+            'title3' => $news_data_raw->articles['2']->title,
+            'image3' => $news_data_raw->articles['2']->urlToImage,
+
+            'name4' => $news_data_raw->articles['3']->source->name,
+            'title4' => $news_data_raw->articles['3']->title,
+            'image4' => $news_data_raw->articles['3']->urlToImage,
+
+            'name5' => $news_data_raw->articles['4']->source->name,
+            'title5' => $news_data_raw->articles['4']->title,
+            'image5' => $news_data_raw->articles['4']->urlToImage,
+
+            'name6' => $news_data_raw->articles['5']->source->name,
+            'title6' => $news_data_raw->articles['5']->title,
+            'image6' => $news_data_raw->articles['5']->urlToImage
+        ];
+
+        // Chaining variable returns with ->with method 
+        return view('baseview')
+        ->with('weather_data', $weather_data)
+        ->with('location', $location)
+        ->with('news_data', $news_data);
     }
 }
