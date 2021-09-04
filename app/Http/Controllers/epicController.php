@@ -78,8 +78,6 @@ class epicController extends Controller
             'image6' => $news_data_raw->articles['5']->urlToImage
         ];
 
-        return $weather_data_raw;
-
         // Chaining variable returns with ->with method 
         return view('baseview')
         ->with('weather_data', $weather_data)
