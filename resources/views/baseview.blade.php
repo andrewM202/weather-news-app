@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather & News</title>
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
@@ -71,7 +71,13 @@
                     @endforeach
                 </ul>
             </div>
-            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-135.17578125000003%2C19.559790136497412%2C-67.41210937500001%2C52.77618568896171&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=5/38.013/-101.294"></a></small>
+                <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=
+                {{ $lon }} 
+                %2C{{ $lat }}
+                %2C{{ $lon }} 
+                %2C{{ $lat }} 
+                &amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/40.250/-76.250"></a></small>
+            <!-- <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-135.17578125000003%2C19.559790136497412%2C-67.41210937500001%2C52.77618568896171&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/40.250/-76.250"></a></small> -->
         </section>
         <section class="divider">
             <div class="divider-box"></div>

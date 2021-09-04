@@ -25,6 +25,10 @@ class epicController extends Controller
         }
         $weather_data_raw = json_decode(file_get_contents($weather_api_url), true);
 
+        // Build iframe with geolocation
+        $lon = $weather_data_raw['coord']['lon'];
+        $lat = $weather_data_raw['coord']['lat'];
+
         // Set hours to shift from UTC
         $hours_to_adjust = ($weather_data_raw['timezone']);
 
@@ -49,6 +53,14 @@ class epicController extends Controller
         $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$weather_data_raw['sys']['country'].'&apiKey='.$news_api_key;
         // decode the URL and get the JSON
         $news_data_raw = json_decode(file_get_contents($news_api_url));
+
+        // if the country the weather api gives is bad, default to US
+        try {
+            $test = $news_data_raw->articles['0']->source->name;
+        } catch (\Throwable $e) {
+            $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.'us'.'&apiKey='.$news_api_key;
+            $news_data_raw = json_decode(file_get_contents($news_api_url));
+        }
 
         // return ($news_data_raw->articles['0']->source->name);
         // return $news_data_raw->articles['0']->content;
@@ -81,6 +93,8 @@ class epicController extends Controller
         // Chaining variable returns with ->with method 
         return view('baseview')
         ->with('weather_data', $weather_data)
+        ->with('lon', $lon)
+        ->with('lat', $lat)
         ->with('location', $location)
         ->with('news_data', $news_data);
 
@@ -143,12 +157,19 @@ class epicController extends Controller
 
         // Get content for news 
         $news_api_key = env('NEWS_API_KEY');
-        //$news_api_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY';
         $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$weather_data_raw['sys']['country'].'&apiKey='.$news_api_key;
         // decode the URL and get the JSON
         $news_data_raw = json_decode(file_get_contents($news_api_url));
 
-        // return ($news_data_raw->articles['0']->source->name);
+        // if the country the weather api gives is bad, default to US
+        try {
+            $test = $news_data_raw->articles['0']->source->name;
+        } catch (\Throwable $e) {
+            $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.'us'.'&apiKey='.$news_api_key;
+            $news_data_raw = json_decode(file_get_contents($news_api_url));
+        }
+
+        // return ($news_data_raw);
         // return $news_data_raw->articles['0']->content;
         $news_data = [
             'name1' => $news_data_raw->articles['0']->source->name,
@@ -179,7 +200,10 @@ class epicController extends Controller
         // Chaining variable returns with ->with method 
         return view('baseview')
         ->with('weather_data', $weather_data)
+        ->with('lon', $lon)
+        ->with('lat', $lat)
         ->with('location', $location)
         ->with('news_data', $news_data);
+    
     }
 }
