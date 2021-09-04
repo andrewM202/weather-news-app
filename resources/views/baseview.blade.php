@@ -86,6 +86,9 @@
         </section>
         <section class="container-fluid containers">
             <div class="row d-flex justify-content-around">
+                <header class="news-header d-flex justify-content-center align-items-center">
+                    <h2>In the News</h2>
+                </header>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
                         <h3>{{ $news_data['name1'] ?? 'Invalid Country' }}</h3>

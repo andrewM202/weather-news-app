@@ -49,6 +49,16 @@ main {
   padding: 100px 0;
   background: linear-gradient(#9198e5, white, #9198e5);
 }
+.containers .news-header {
+  background-color: #1e3162;
+  width: 75vw;
+  min-height: 150px;
+  margin-bottom: 50px;
+}
+.containers .news-header > h2 {
+  color: white;
+  text-align: center;
+}
 .containers .news {
   background-color: #1e3162;
   margin: 50px 50px;
@@ -80,7 +90,8 @@ main {
 }
 .containers .news img {
   width: 90%;
-  height: 50%;
+  height: 60%;
+  padding-bottom: 25px;
 }
 .containers .row {
   --bs-gutter-x: 0;
@@ -154,11 +165,21 @@ main {
     margin: 50px 0 100px 0;
     min-height: 350px;
   }
+
+  .news-header {
+    width: 600px !important;
+    max-width: 100vw !important;
+  }
 }
 @media (max-width: 600px) {
   .news {
     max-width: 100% !important;
     max-height: 500px !important;
+  }
+
+  .news-header {
+    width: 600px !important;
+    max-width: 100vw !important;
   }
 }
 @media (max-width: 475px) {
