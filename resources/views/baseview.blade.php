@@ -92,7 +92,7 @@
                         <h3>{{ $news_data['name2'] ?? 'Invalid Country' }}</h3>
                     </header>
                     <p>{{ $news_data['title2'] ?? 'Null' }}</p>
-                    <img src="{{ $news_data['image2'] }}"></img>
+                    <img src="{{ $news_data['image2'] ?? 'Null' }}"></img>
                 </div>
             </div>
             <div class="row d-flex justify-content-around">
@@ -101,14 +101,14 @@
                         <h3>{{ $news_data['name3'] ?? 'Invalid Country' }}</h3>
                     </header>
                     <p>{{ $news_data['title3'] ?? 'Null' }}</p>
-                    <img src="{{ $news_data['image3'] }}"></img>
+                    <img src="{{ $news_data['image3'] ?? 'Null' }}"></img>
                 </div>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
                         <h3>{{ $news_data['name4'] ?? 'Invalid Country' }}</h3>
                     </header>
                     <p>{{ $news_data['title4'] ?? 'Null' }}</p>
-                    <img src="{{ $news_data['image4'] }}"></img>
+                    <img src="{{ $news_data['image4'] ?? 'Null' }}"></img>
                 </div>
             </div>
             <div class="row d-flex justify-content-around">
@@ -117,14 +117,14 @@
                         <h3>{{ $news_data['name5'] ?? 'Invalid Country' }}</h3>
                     </header>
                     <p>{{ $news_data['title5'] ?? 'Null' }}</p>
-                    <img src="{{ $news_data['image5'] }}"></img>
+                    <img src="{{ $news_data['image5'] ?? 'Null' }}"></img>
                 </div>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
                         <h3>{{ $news_data['name6'] ?? 'Invalid Country' }}</h3>
                     </header>
                     <p>{{ $news_data['title6'] ?? 'Null' }}</p>
-                    <img src="{{ $news_data['image6'] }}"></img>
+                    <img src="{{ $news_data['image6'] ?? 'Null' }}"></img>
                 </div>
             </div>
         </section>
