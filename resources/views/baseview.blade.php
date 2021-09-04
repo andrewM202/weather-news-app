@@ -85,7 +85,7 @@
                         <h3>{{ $news_data['name1'] ?? 'Invalid Country' }}</h3>
                     </header>
                     <p>{{ $news_data['title1'] ?? 'Null' }}</p>
-                    <img src="{{ $news_data['image1'] }}"></img>
+                    <img src="{{ $news_data['image1'] ?? 'Null' }}"></img>
                 </div>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
