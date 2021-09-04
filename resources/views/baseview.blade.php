@@ -66,7 +66,7 @@
                             {!! $location ?? 'Invalid City Name' !!}
                         </h4>
                 <ul class="list-group">
-                    @foreach($weather_data as $item)
+                    @foreach($weather_data ?? '[]' as $item)
                             <li class="list-group-item">{{ $item ?? 'Null' }}</li>
                     @endforeach
                 </ul>
