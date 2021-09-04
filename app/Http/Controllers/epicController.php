@@ -81,10 +81,10 @@ class epicController extends Controller
         return $weather_data_raw;
 
         // Chaining variable returns with ->with method 
-        return view('baseview')
-        ->with('weather_data', $weather_data)
-        ->with('location', $location)
-        ->with('news_data', $news_data);
+        // return view('baseview')
+        // ->with('weather_data', $weather_data)
+        // ->with('location', $location)
+        // ->with('news_data', $news_data);
 
         // returning multiple vars/array with "with" method
         // $data = [
