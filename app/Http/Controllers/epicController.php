@@ -78,6 +78,8 @@ class epicController extends Controller
             'image6' => $news_data_raw->articles['5']->urlToImage
         ];
 
+        return $weather_data_raw;
+
         // Chaining variable returns with ->with method 
         return view('baseview')
         ->with('weather_data', $weather_data)
@@ -140,8 +142,6 @@ class epicController extends Controller
             'sunrise' => "Sunrise: ".date("g:i:s A", $weather_data_raw['sys']['sunrise']+$hours_to_adjust),
             'clouds' => "Percent Clouds: ".(string)$weather_data_raw['clouds']['all']."%"
         ];
-
-        return $weather_data;
 
         // returning a single var with "with" method 
         return view('baseview')->with('weather_data', $weather_data)->with('location', $location);
