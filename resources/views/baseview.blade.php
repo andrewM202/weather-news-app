@@ -141,14 +141,14 @@
                     <header>
                         <a href="{{ $news_data['url7'] }}" target="_blank"><h3>{{ $news_data['name7'] ?? 'Invalid Country' }}</h3></a>
                     </header>
-                    <p>{{ $news_data['title6'] ?? 'Null' }}</p>
+                    <p>{{ $news_data['title7'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image7'] ?? 'Null' }}" alt="News Image"></img>
                 </div>
                 <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
                     <header>
                         <a href="{{ $news_data['url8'] }}" target="_blank"><h3>{{ $news_data['name8'] ?? 'Invalid Country' }}</h3></a>
                     </header>
-                    <p>{{ $news_data['title7'] ?? 'Null' }}</p>
+                    <p>{{ $news_data['title8'] ?? 'Null' }}</p>
                     <img src="{{ $news_data['image8'] ?? 'Null' }}" alt="News Image"></img>
                 </div>
             </div>
