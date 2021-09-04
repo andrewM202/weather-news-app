@@ -55,6 +55,8 @@ body > header {
         margin: 50px 50px;
         min-height: 400px;
         min-width: 400px;
+        height: 600px;
+        width: 600px;
         max-width: 600px;
         align-items: center;
         color: white;
@@ -136,7 +138,9 @@ body > header {
     iframe {
         margin-left: 50px;
         width: 600px;
-        height: 500px;
+        height: 600px;
+        border: 3px solid hsl(223, 53%, 25%); 
+        border-radius: 10px;
     }
  }
 
@@ -153,6 +157,13 @@ body > header {
              margin: 50px 0 100px 0;
              min-height: 350px;
          }
+     }
+ }
+
+ @media (max-width: 600px) {
+     .news {
+         max-width: 100% !important;
+         max-height: 500px !important;
      }
  }
 

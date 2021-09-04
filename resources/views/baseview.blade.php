@@ -76,7 +76,7 @@
                 %2C{{ $lat }}
                 %2C{{ $lon }} 
                 %2C{{ $lat }} 
-                &amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/40.250/-76.250"></a></small>
+                &amp;layer=mapnik"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/40.250/-76.250"></a></small>
             <!-- <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-135.17578125000003%2C19.559790136497412%2C-67.41210937500001%2C52.77618568896171&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/40.250/-76.250"></a></small> -->
         </section>
         <section class="divider">
