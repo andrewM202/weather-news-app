@@ -141,6 +141,8 @@ class epicController extends Controller
             'clouds' => "Percent Clouds: ".(string)$weather_data_raw['clouds']['all']."%"
         ];
 
+        return $weather_data;
+
         // returning a single var with "with" method 
         return view('baseview')->with('weather_data', $weather_data)->with('location', $location);
     }
