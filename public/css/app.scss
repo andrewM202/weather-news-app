@@ -55,10 +55,10 @@ body > header {
         width: 75vw;
         min-height: 150px;
         margin-bottom: 50px;
-        > h2 {
-            color: white;
+        h2 {
             text-align: center;
             font-size: 3rem;
+            color: white;
         }
      }
      .news {
@@ -77,6 +77,9 @@ body > header {
             h1 {
                 font-size: 2rem;
                 font-weight: bold;
+            }
+            a {
+                color: white;
             }
         }
         p {
