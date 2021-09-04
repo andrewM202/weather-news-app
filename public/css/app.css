@@ -58,6 +58,7 @@ main {
 .containers .news-header > h2 {
   color: white;
   text-align: center;
+  font-size: 3rem;
 }
 .containers .news {
   background-color: #1e3162;
