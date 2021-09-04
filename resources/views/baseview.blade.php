@@ -133,6 +133,22 @@
                     <img src="{{ $news_data['image6'] ?? 'Null' }}" alt="News Image"></img>
                 </div>
             </div>
+            <div class="row d-flex justify-content-around">
+                <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
+                    <header>
+                        <h3>{{ $news_data['name6'] ?? 'Invalid Country' }}</h3>
+                    </header>
+                    <p>{{ $news_data['title6'] ?? 'Null' }}</p>
+                    <img src="{{ $news_data['image5'] ?? 'Null' }}" alt="News Image"></img>
+                </div>
+                <div class="col-10 col-sm-5 col-lg-4 news d-flex flex-column">
+                    <header>
+                        <h3>{{ $news_data['name7'] ?? 'Invalid Country' }}</h3>
+                    </header>
+                    <p>{{ $news_data['title7'] ?? 'Null' }}</p>
+                    <img src="{{ $news_data['image6'] ?? 'Null' }}" alt="News Image"></img>
+                </div>
+            </div>
         </section>
     </main>
     <footer>

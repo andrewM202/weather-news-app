@@ -194,7 +194,15 @@ class epicController extends Controller
 
             'name6' => $news_data_raw->articles['5']->source->name,
             'title6' => $news_data_raw->articles['5']->title,
-            'image6' => $news_data_raw->articles['5']->urlToImage
+            'image6' => $news_data_raw->articles['5']->urlToImage,
+
+            'name7' => $news_data_raw->articles['6']->source->name,
+            'title7' => $news_data_raw->articles['6']->title,
+            'image7' => $news_data_raw->articles['6']->urlToImage,
+
+            'name8' => $news_data_raw->articles['7']->source->name,
+            'title8' => $news_data_raw->articles['7']->title,
+            'image8' => $news_data_raw->articles['7']->urlToImage
         ];
 
         // Chaining variable returns with ->with method 
