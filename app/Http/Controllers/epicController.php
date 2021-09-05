@@ -38,6 +38,7 @@ class epicController extends Controller
         // Get mass content of weather in array
         $weather_data = [
             'temp' => "Temperature: ".(string)$weather_data_raw['main']['temp']." Fahrenheit",
+            'feels' => "Feels Like: ".(string)$weather_data_raw['main']['feels_like']." Fahrenheit",
             'humidity' => "Humidity: ".(string)$weather_data_raw['main']['humidity']."%",
             'wind_speed' => "Wind Speed: ".$weather_data_raw['wind']['speed']." m/h",
             'pressure' => "Pressure: ".(string)$weather_data_raw['main']['pressure']." hPa",
@@ -51,19 +52,22 @@ class epicController extends Controller
         $news_api_key = env('NEWS_API_KEY');
         //$news_api_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY';
         $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$weather_data_raw['sys']['country'].'&apiKey='.$news_api_key;
-        // decode the URL and get the JSON
-        $news_data_raw = json_decode(file_get_contents($news_api_url));
 
         // if the country the weather api gives is bad, default to US
         try {
+            $news_data_raw = json_decode(file_get_contents($news_api_url));
             $test = $news_data_raw->articles['0']->source->name;
         } catch (\Throwable $e) {
             $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.'us'.'&apiKey='.$news_api_key;
-            $news_data_raw = json_decode(file_get_contents($news_api_url));
+            $news_data_raw = json_decode(@file_get_contents($news_api_url));
+        } finally {
+            return view('baseview')
+            ->with('weather_data', $weather_data)
+            ->with('lon', $lon)
+            ->with('lat', $lat)
+            ->with('location', $location);
         }
 
-        // return ($news_data_raw->articles['0']->source->name);
-        // return $news_data_raw->articles['0']->content;
         $news_data = [
             'name1' => $news_data_raw->articles['0']->source->name,
             'title1' => $news_data_raw->articles['0']->title,
@@ -162,6 +166,7 @@ class epicController extends Controller
 
         $weather_data = [
             'temp' => "Temperature: ".(string)$weather_data_raw['main']['temp']." Fahrenheit",
+            'feels' => "Feels Like: ".(string)$weather_data_raw['main']['feels_like']." Fahrenheit",
             'humidity' => "Humidity: ".(string)$weather_data_raw['main']['humidity']."%",
             'wind_speed' => "Wind Speed: ".$weather_data_raw['wind']['speed']." mph",
             'pressure' => "Pressure: ".(string)$weather_data_raw['main']['pressure']." hPa",
@@ -179,14 +184,19 @@ class epicController extends Controller
 
         // if the country the weather api gives is bad, default to US
         try {
+            $news_data_raw = json_decode(file_get_contents($news_api_url));
             $test = $news_data_raw->articles['0']->source->name;
         } catch (\Throwable $e) {
             $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.'us'.'&apiKey='.$news_api_key;
-            $news_data_raw = json_decode(file_get_contents($news_api_url));
+            $news_data_raw = json_decode(@file_get_contents($news_api_url));
+        } finally {
+            return view('baseview')
+            ->with('weather_data', $weather_data)
+            ->with('lon', $lon)
+            ->with('lat', $lat)
+            ->with('location', $location);
         }
 
-        // return ($news_data_raw);
-        // return $news_data_raw->articles['0']->content;
         $news_data = [
             'name1' => $news_data_raw->articles['0']->source->name,
             'title1' => $news_data_raw->articles['0']->title,

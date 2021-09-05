@@ -27,8 +27,14 @@ Route::get('/weather', 'App\Http\Controllers\weatherController@weatherData');
 Route::get('/weather/{city}',                  // Can be 1+ letters a-z 
  'App\Http\Controllers\epicController@weather')->where('city', '[a-z]+');
 
- // See the news JSON returned 
- Route::get('/news/', 'App\Http\Controllers\newsController@newsData');
+// See the news JSON returned 
+Route::get('/news/', 'App\Http\Controllers\newsController@newsData');
+
+// See pollution JSON 
+Route::get('/pollution/', 'App\Http\Controllers\weatherController@pollutionData');
+
+// See weather map 
+Route::get('/map/', 'App\Http\Controllers\weatherController@maps');
 
 // Route::get('/weather/{country}/{county-number}',
 // 'App\Http\Controllers\epicController@weather')->where([
