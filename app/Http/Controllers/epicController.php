@@ -179,13 +179,10 @@ class epicController extends Controller
         // Get content for news 
         $news_api_key = env('NEWS_API_KEY');
         $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$weather_data_raw['sys']['country'].'&apiKey='.$news_api_key;
-        // decode the URL and get the JSON
-        $news_data_raw = json_decode(file_get_contents($news_api_url));
 
         // if the country the weather api gives is bad, default to US
         try {
             $news_data_raw = json_decode(file_get_contents($news_api_url));
-            $test = $news_data_raw->articles['0']->source->name;
         } catch (\Throwable $e) {
             $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.'us'.'&apiKey='.$news_api_key;
             $news_data_raw = json_decode(@file_get_contents($news_api_url));
