@@ -105,20 +105,21 @@ class epicController extends Controller
             ];
         }
 
-        // $news_data = populate_news($weather_data_raw);
+        $news_data = populate_news($weather_data_raw);
 
-        function about_country($country) {
-             // rescountries.eu API call
-            $country_data = json_decode(file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$country), true);
-            return [
-                'country_name' => 'Country: '.$country_data['name'],
-                'country_capital' => 'Capital City: '.$country_data['capital'],
-                'counry_flag' => $country_data['flag'],
-                'country_language' => 'Language: '.$country_data['languages']['0']['name'],
-                'country_currency' => 'Currency: '.$country_data['currencies']['0']['code']
-            ];
-        }
-        $country_data = about_country($weather_data_raw['sys']['country']);
+        // rescountries.eu API call
+        $country = $weather_data_raw['sys']['country'];
+        $country_api_url = json_decode(file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$country), true);
+        $country_data = [
+            'country_capital' => 'Capital City: '.$country_api_url['capital'],
+            'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
+            'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
+            'country_population' => 'Population: '.$country_api_url['population'],
+            'country_region' => 'Region: '.$country_api_url['region'],
+            'country_regional_block' => 'Regional Block: '.$country_api_url['regionalBlocs']['0']['acronym']
+        ];
+        $country_name = 'Country: '.$country_api_url['name'];
+        $country_flag = $country_api_url['flag'];
 
         // Chaining variable returns with ->with method 
         return view('baseview')
@@ -126,8 +127,10 @@ class epicController extends Controller
         ->with('lon', $lon)
         ->with('lat', $lat)
         ->with('location', $location)
-        ->with('country_data', $country_data);
-        // ->with('news_data', $news_data);
+        ->with('country_data', $country_data)
+        ->with('country_name', $country_name)
+        ->with('country_flag', $country_flag)
+        ->with('news_data', $news_data);
 
     }
 
@@ -230,12 +233,29 @@ class epicController extends Controller
             'url8' => $news_data_raw->articles['7']->url
         ];
 
+        // rescountries.eu API call
+        $country = $weather_data_raw['sys']['country'];
+        $country_api_url = json_decode(file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$country), true);
+        $country_data = [
+            'country_capital' => 'Capital City: '.$country_api_url['capital'],
+            'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
+            'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
+            'country_population' => 'Population: '.$country_api_url['population'],
+            'country_region' => 'Region: '.$country_api_url['region'],
+            'country_regional_block' => 'Regional Block: '.$country_api_url['regionalBlocs']['0']['acronym']
+        ];
+        $country_name = 'Country: '.$country_api_url['name'];
+        $country_flag = $country_api_url['flag'];
+
         // Chaining variable returns with ->with method 
         return view('baseview')
         ->with('weather_data', $weather_data)
         ->with('lon', $lon)
         ->with('lat', $lat)
         ->with('location', $location)
+        ->with('country_data', $country_data)
+        ->with('country_name', $country_name)
+        ->with('country_flag', $country_flag)
         ->with('news_data', $news_data);
     
     }

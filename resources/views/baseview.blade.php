@@ -78,22 +78,25 @@
             %2C{{ $lat ?? 100 }} 
             &amp;layer=mapnik"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/{{ $lat ?? 100 }}/{{ $lon ?? 100 }}"></a></small>
                 <div class="country-content d-flex flex-column justify-content-start align-items-center">
+                    <h4 class="p-4">{!! $country_name ?? 'Null' !!}</h4>
                     <ul class="list-group">
                         @foreach($country_data ?? [] as $item)
-                            @if($loop->first)
-                                <h4 class="p-4">{{ $item ?? 'Null' }}</h4>
-                            @else
                             <li class="list-group-item">{{ $item ?? 'Null' }}</li>
-                            @endif
                         @endforeach
                     </ul>
                 </div>
                 <div class="country-content d-flex flex-column justify-content-start align-items-center"></div>
         </section>
         <section class="divider">
-            <div class="divider-box"></div>
-            <div class="divider-box"></div>
-            <div class="divider-box"></div>
+            <div class="divider-box">
+                <img src="{{ url('img/thunderstorm.jpg') }}"></img>
+            </div>
+            <div class="divider-box">
+                <img src="{!! $country_flag ?? '#' !!}"></img>
+            </div>
+            <div class="divider-box">
+                <img src="{{ url('img/sunny.jpg') }}"></img>
+            </div>
         </section>
         <section class="container-fluid containers">
             <div class="row d-flex justify-content-around">

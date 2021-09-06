@@ -119,6 +119,14 @@ body > header {
         height: 350px; 
         background-color: white;
         margin: 50px 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 90%;
+            height: 90%;
+            border: 1px solid hsl(223, 53%, 25%); 
+        }
     }
  }
 
