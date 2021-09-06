@@ -121,6 +121,26 @@ class epicController extends Controller
         $country_name = 'Country: '.$country_api_url['name'];
         $country_flag = $country_api_url['flag'];
 
+        // air pollution API call using weather api key
+        $pollution_api_url = 'http://api.openweathermap.org/data/2.5/air_pollution?lat='.$lat.'&lon='.$lon.'&appid='.$weather_api_key;
+        $pollution_data_raw = json_decode(file_get_contents($pollution_api_url), true);
+
+        // check air quality index value
+        $air_quality = $pollution_data_raw['list']['0']['main']['aqi'];
+        if($air_quality == 1) { $air_quality = (string)$air_quality.', Good'; } 
+        else if($air_quality == 2) { $air_quality = (string)$air_quality.', Fair'; } 
+        else if($air_quality == 3) { $air_quality = (string)$air_quality.', Moderate'; }
+        else if($air_quality == 4) { $air_quality = (string)$air_quality.', Poor'; } 
+        else if($air_quality == 5) { $air_quality = (string)$air_quality.', Very Poor'; }
+        $pollution_data = [
+            'air_quality' => 'Air Quality: '.$air_quality,
+            'concen_co' => 'Concentration CO: '.$pollution_data_raw['list']['0']['components']['co'].' μg/m3',
+            'concen_no' => 'Concentration NO: '.$pollution_data_raw['list']['0']['components']['no'].' μg/m3',
+            'concen_no2' => 'Concentration NO2: '.$pollution_data_raw['list']['0']['components']['no2'].' μg/m3',
+            'concen_o3' => 'Concentration O3: '.$pollution_data_raw['list']['0']['components']['o3'].' μg/m3',
+            'concen_so2' => 'Concentration SO2: '.$pollution_data_raw['list']['0']['components']['so2'].' μg/m3'
+        ];
+
         // Chaining variable returns with ->with method 
         return view('baseview')
         ->with('weather_data', $weather_data)
@@ -130,8 +150,8 @@ class epicController extends Controller
         ->with('country_data', $country_data)
         ->with('country_name', $country_name)
         ->with('country_flag', $country_flag)
-        ->with('news_data', $news_data);
-
+        ->with('news_data', $news_data)
+        ->with('pollution_data', $pollution_data);
     }
 
     // used with HTML form to search for weather
@@ -247,6 +267,26 @@ class epicController extends Controller
         $country_name = 'Country: '.$country_api_url['name'];
         $country_flag = $country_api_url['flag'];
 
+        // air pollution API call using weather api key
+        $pollution_api_url = 'http://api.openweathermap.org/data/2.5/air_pollution?lat='.$lat.'&lon='.$lon.'&appid='.$weather_api_key;
+        $pollution_data_raw = json_decode(file_get_contents($pollution_api_url), true);
+
+        // check air quality index value
+        $air_quality = $pollution_data_raw['list']['0']['main']['aqi'];
+        if($air_quality == 1) { $air_quality = (string)$air_quality.', Good'; } 
+        else if($air_quality == 2) { $air_quality = (string)$air_quality.', Fair'; } 
+        else if($air_quality == 3) { $air_quality = (string)$air_quality.', Moderate'; }
+        else if($air_quality == 4) { $air_quality = (string)$air_quality.', Poor'; } 
+        else if($air_quality == 5) { $air_quality = (string)$air_quality.', Very Poor'; }
+        $pollution_data = [
+            'air_quality' => 'Air Quality: '.$air_quality,
+            'concen_co' => 'Concentration CO: '.$pollution_data_raw['list']['0']['components']['co'].' μg/m3',
+            'concen_no' => 'Concentration NO: '.$pollution_data_raw['list']['0']['components']['no'].' μg/m3',
+            'concen_no2' => 'Concentration NO2: '.$pollution_data_raw['list']['0']['components']['no2'].' μg/m3',
+            'concen_o3' => 'Concentration O3: '.$pollution_data_raw['list']['0']['components']['o3'].' μg/m3',
+            'concen_so2' => 'Concentration SO2: '.$pollution_data_raw['list']['0']['components']['so2'].' μg/m3',
+        ];
+
         // Chaining variable returns with ->with method 
         return view('baseview')
         ->with('weather_data', $weather_data)
@@ -256,8 +296,8 @@ class epicController extends Controller
         ->with('country_data', $country_data)
         ->with('country_name', $country_name)
         ->with('country_flag', $country_flag)
-        ->with('news_data', $news_data);
-    
+        ->with('news_data', $news_data)
+        ->with('pollution_data', $pollution_data);
     }
 
     public function printroutetest() {

@@ -85,12 +85,18 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="country-content d-flex flex-column justify-content-start align-items-center"></div>
+                <div class="country-content d-flex flex-column justify-content-start align-items-center">
+                    <h4 class="p-4">Pollution Data</h4>
+                    <ul class="list-group">
+                        @foreach($pollution_data ?? [] as $item)
+                            <li class="list-group-item">{{ $item ?? 'Null' }}</li>
+                        @endforeach
+                    </ul>
+                </div>
         </section>
         <section class="divider">
             <div class="divider-box">
                 <img src="{{ asset('img/thunderstorm.jpg') }}"></img>
-                <!-- <img src="{{ url('img/thunderstorm.jpg') }}"></img> -->
             </div>
             <div class="divider-box">
                 <img src="{{ $country_flag ?? '#' }}"></img>
