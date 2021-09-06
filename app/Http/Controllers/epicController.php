@@ -156,7 +156,8 @@ class epicController extends Controller
 
     // used with HTML form to search for weather
     public function weather_search(Request $request) {
-        $request = $request->city;
+        // convert city name to lowercase to fix error
+        $request = strtolower($request->city);
         return redirect()->route('get_weather', $request);
     }
 
