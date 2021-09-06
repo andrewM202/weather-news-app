@@ -8,7 +8,7 @@ class newsController extends Controller
 {
     public function newsData() {
         // Get content for news 
-        $news_api_key = env('NEWS_API_KEY');
+        $news_api_key = env('NEWS1_API_KEY');
         $country_name = 'US';
         $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$country_name.'&apiKey='.$news_api_key;
 

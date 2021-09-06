@@ -49,9 +49,11 @@ class epicController extends Controller
         ];
 
         // Get content for news 
-        $news_api_key = env('NEWS_API_KEY');
+        $news_api_key = env('NEWS1_API_KEY');
         //$news_api_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY';
         $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$weather_data_raw['sys']['country'].'&apiKey='.$news_api_key;
+        $news_data_raw = json_decode(file_get_contents($news_api_url));
+        // Return news JSON
 
         // if the country the weather api gives is bad, default to US
         try {
@@ -60,13 +62,7 @@ class epicController extends Controller
         } catch (\Throwable $e) {
             $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.'us'.'&apiKey='.$news_api_key;
             $news_data_raw = json_decode(@file_get_contents($news_api_url));
-        } finally {
-            return view('baseview')
-            ->with('weather_data', $weather_data)
-            ->with('lon', $lon)
-            ->with('lat', $lat)
-            ->with('location', $location);
-        }
+        } 
 
         $news_data = [
             'name1' => $news_data_raw->articles['0']->source->name,
@@ -177,22 +173,18 @@ class epicController extends Controller
         ];
 
         // Get content for news 
-        $news_api_key = env('NEWS_API_KEY');
+        $news_api_key = env('NEWS1_API_KEY');
         $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$weather_data_raw['sys']['country'].'&apiKey='.$news_api_key;
+        $news_data_raw = json_decode(file_get_contents($news_api_url));
 
-        // if the country the weather api gives is bad, default to US
-        try {
+         // if the country the weather api gives is bad, default to US
+         try {
             $news_data_raw = json_decode(file_get_contents($news_api_url));
+            $test = $news_data_raw->articles['0']->source->name;
         } catch (\Throwable $e) {
             $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.'us'.'&apiKey='.$news_api_key;
             $news_data_raw = json_decode(@file_get_contents($news_api_url));
-        } finally {
-            return view('baseview')
-            ->with('weather_data', $weather_data)
-            ->with('lon', $lon)
-            ->with('lat', $lat)
-            ->with('location', $location);
-        }
+        } 
 
         $news_data = [
             'name1' => $news_data_raw->articles['0']->source->name,
