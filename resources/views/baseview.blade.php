@@ -48,8 +48,8 @@
                 </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Weather For..." aria-label="Search">
+            <form class="d-flex" action="/search/" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Weather For..." name="city" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
             </div>

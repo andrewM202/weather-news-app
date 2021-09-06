@@ -48,23 +48,21 @@ class epicController extends Controller
             'clouds' => "Cloud Cover: ".(string)$weather_data_raw['clouds']['all']."%"
         ];
 
-        // Get content for news 
-        $news_api_key = env('NEWS1_API_KEY');
-        //$news_api_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY';
-        $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$weather_data_raw['sys']['country'].'&apiKey='.$news_api_key;
-        $news_data_raw = json_decode(file_get_contents($news_api_url));
-        // Return news JSON
-
-        // if the country the weather api gives is bad, default to US
-        try {
+        function populate_news($weather_data_raw) {
+            $news_api_key = env('NEWS1_API_KEY');
+            $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.$weather_data_raw['sys']['country'].'&apiKey='.$news_api_key;
             $news_data_raw = json_decode(file_get_contents($news_api_url));
-            $test = $news_data_raw->articles['0']->source->name;
-        } catch (\Throwable $e) {
-            $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.'us'.'&apiKey='.$news_api_key;
-            $news_data_raw = json_decode(@file_get_contents($news_api_url));
-        } 
 
-        $news_data = [
+            // if the country the weather api gives is bad, default to US
+            try {
+                $news_data_raw = json_decode(file_get_contents($news_api_url));
+                $test = $news_data_raw->articles['0']->source->name;
+            } catch (\Throwable $e) {
+                $news_api_url = 'https://newsapi.org/v2/top-headlines?country='.'us'.'&apiKey='.$news_api_key;
+                $news_data_raw = json_decode(@file_get_contents($news_api_url));
+            } 
+            
+            return $news_data = [
             'name1' => $news_data_raw->articles['0']->source->name,
             'title1' => $news_data_raw->articles['0']->title,
             'image1' => $news_data_raw->articles['0']->urlToImage,
@@ -104,7 +102,9 @@ class epicController extends Controller
             'title8' => $news_data_raw->articles['7']->title,
             'image8' => $news_data_raw->articles['7']->urlToImage,
             'url8' => $news_data_raw->articles['7']->url
-        ];
+            ];
+        }
+        $news_data = populate_news($weather_data_raw);
 
         // Chaining variable returns with ->with method 
         return view('baseview')
@@ -114,25 +114,12 @@ class epicController extends Controller
         ->with('location', $location)
         ->with('news_data', $news_data);
 
-        // returning multiple vars/array with "with" method
-        // $data = [
-        //     'title' => $title,
-        //     'box1' => $box1
-        // ];
-        // return view('baseview')->with('data', $data);
     }
 
-
-
-
-
-
-    public function printroutetest() {
-        // Print out the url
-        print_r(route('test'));
-        echo "<br>";
-        // doesnt work but basically do same thing but in html
-        print_r("<a href='{{ route('test') }} '>Test</a>");
+    // used with HTML form to search for weather
+    public function weather_search(Request $request) {
+        $request = $request->city;
+        return redirect()->route('get_weather', $request);
     }
 
     public function weather($city) {
@@ -236,5 +223,13 @@ class epicController extends Controller
         ->with('location', $location)
         ->with('news_data', $news_data);
     
+    }
+
+    public function printroutetest() {
+        // Print out the url
+        print_r(route('test'));
+        echo "<br>";
+        // doesnt work but basically do same thing but in html
+        print_r("<a href='{{ route('test') }} '>Test</a>");
     }
 }
