@@ -256,14 +256,26 @@ class epicController extends Controller
         // rescountries.eu API call
         $country = $weather_data_raw['sys']['country'];
         $country_api_url = json_decode(file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$country), true);
-        $country_data = [
-            'country_capital' => 'Capital City: '.$country_api_url['capital'],
-            'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
-            'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
-            'country_population' => 'Population: '.$country_api_url['population'],
-            'country_region' => 'Region: '.$country_api_url['region'],
-            'country_regional_block' => 'Regional Block: '.$country_api_url['regionalBlocs']['0']['acronym']
-        ];
+        try {
+            $country_data = [
+                'country_capital' => 'Capital City: '.$country_api_url['capital'],
+                'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
+                'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
+                'country_population' => 'Population: '.$country_api_url['population'],
+                'country_region' => 'Region: '.$country_api_url['region'],
+                'country_regional_block' => 'Regional Block: '.$country_api_url['regionalBlocs']['0']['acronym']
+            ];
+        } catch (\Throwable $e) {
+            $country_data = [
+                'country_capital' => 'Capital City: '.$country_api_url['capital'],
+                'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
+                'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
+                'country_population' => 'Population: '.$country_api_url['population'],
+                'country_region' => 'Region: '.$country_api_url['region'],
+                'country_regional_block' => 'Regional Block: None'
+            ];
+        }
+       
         $country_name = 'Country: '.$country_api_url['name'];
         $country_flag = $country_api_url['flag'];
 
