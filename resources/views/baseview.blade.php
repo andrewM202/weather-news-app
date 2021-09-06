@@ -175,8 +175,16 @@
             </div>
         </section>
     </main>
-    <footer>
-
+    <footer class="d-flex justify-content-flex-start align-items-center flex-column">
+        <h3>App Created With</h3>
+        <ul>
+            <li>Four APIs</li>
+            <li>PHP/Laravel</li>
+            <li>Boostrap</li>
+            <li>Dart SASS</li>
+            <li>jQuery</li>
+            <li>HTML</li>
+        </ul>
     </footer>
 </body>
 </html>
