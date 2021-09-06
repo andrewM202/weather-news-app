@@ -63,48 +63,62 @@ class epicController extends Controller
             } 
             
             return $news_data = [
-            'name1' => $news_data_raw->articles['0']->source->name,
-            'title1' => $news_data_raw->articles['0']->title,
-            'image1' => $news_data_raw->articles['0']->urlToImage,
-            'url1' => $news_data_raw->articles['0']->url,
+                'name1' => $news_data_raw->articles['0']->source->name,
+                'title1' => $news_data_raw->articles['0']->title,
+                'image1' => $news_data_raw->articles['0']->urlToImage,
+                'url1' => $news_data_raw->articles['0']->url,
 
-            'name2' => $news_data_raw->articles['1']->source->name,
-            'title2' => $news_data_raw->articles['1']->title,
-            'image2' => $news_data_raw->articles['1']->urlToImage,
-            'url2' => $news_data_raw->articles['1']->url,
+                'name2' => $news_data_raw->articles['1']->source->name,
+                'title2' => $news_data_raw->articles['1']->title,
+                'image2' => $news_data_raw->articles['1']->urlToImage,
+                'url2' => $news_data_raw->articles['1']->url,
 
-            'name3' => $news_data_raw->articles['2']->source->name,
-            'title3' => $news_data_raw->articles['2']->title,
-            'image3' => $news_data_raw->articles['2']->urlToImage,
-            'url3' => $news_data_raw->articles['2']->url,
+                'name3' => $news_data_raw->articles['2']->source->name,
+                'title3' => $news_data_raw->articles['2']->title,
+                'image3' => $news_data_raw->articles['2']->urlToImage,
+                'url3' => $news_data_raw->articles['2']->url,
 
-            'name4' => $news_data_raw->articles['3']->source->name,
-            'title4' => $news_data_raw->articles['3']->title,
-            'image4' => $news_data_raw->articles['3']->urlToImage,
-            'url4' => $news_data_raw->articles['3']->url,
+                'name4' => $news_data_raw->articles['3']->source->name,
+                'title4' => $news_data_raw->articles['3']->title,
+                'image4' => $news_data_raw->articles['3']->urlToImage,
+                'url4' => $news_data_raw->articles['3']->url,
 
-            'name5' => $news_data_raw->articles['4']->source->name,
-            'title5' => $news_data_raw->articles['4']->title,
-            'image5' => $news_data_raw->articles['4']->urlToImage,
-            'url5' => $news_data_raw->articles['4']->url,
+                'name5' => $news_data_raw->articles['4']->source->name,
+                'title5' => $news_data_raw->articles['4']->title,
+                'image5' => $news_data_raw->articles['4']->urlToImage,
+                'url5' => $news_data_raw->articles['4']->url,
 
-            'name6' => $news_data_raw->articles['5']->source->name,
-            'title6' => $news_data_raw->articles['5']->title,
-            'image6' => $news_data_raw->articles['5']->urlToImage,
-            'url6' => $news_data_raw->articles['5']->url,
+                'name6' => $news_data_raw->articles['5']->source->name,
+                'title6' => $news_data_raw->articles['5']->title,
+                'image6' => $news_data_raw->articles['5']->urlToImage,
+                'url6' => $news_data_raw->articles['5']->url,
 
-            'name7' => $news_data_raw->articles['6']->source->name,
-            'title7' => $news_data_raw->articles['6']->title,
-            'image7' => $news_data_raw->articles['6']->urlToImage,
-            'url7' => $news_data_raw->articles['6']->url,
+                'name7' => $news_data_raw->articles['6']->source->name,
+                'title7' => $news_data_raw->articles['6']->title,
+                'image7' => $news_data_raw->articles['6']->urlToImage,
+                'url7' => $news_data_raw->articles['6']->url,
 
-            'name8' => $news_data_raw->articles['7']->source->name,
-            'title8' => $news_data_raw->articles['7']->title,
-            'image8' => $news_data_raw->articles['7']->urlToImage,
-            'url8' => $news_data_raw->articles['7']->url
+                'name8' => $news_data_raw->articles['7']->source->name,
+                'title8' => $news_data_raw->articles['7']->title,
+                'image8' => $news_data_raw->articles['7']->urlToImage,
+                'url8' => $news_data_raw->articles['7']->url
             ];
         }
-        $news_data = populate_news($weather_data_raw);
+
+        // $news_data = populate_news($weather_data_raw);
+
+        function about_country($country) {
+             // rescountries.eu API call
+            $country_data = json_decode(file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$country), true);
+            return [
+                'country_name' => 'Country: '.$country_data['name'],
+                'country_capital' => 'Capital City: '.$country_data['capital'],
+                'counry_flag' => $country_data['flag'],
+                'country_language' => 'Language: '.$country_data['languages']['0']['name'],
+                'country_currency' => 'Currency: '.$country_data['currencies']['0']['code']
+            ];
+        }
+        $country_data = about_country($weather_data_raw['sys']['country']);
 
         // Chaining variable returns with ->with method 
         return view('baseview')
@@ -112,7 +126,8 @@ class epicController extends Controller
         ->with('lon', $lon)
         ->with('lat', $lat)
         ->with('location', $location)
-        ->with('news_data', $news_data);
+        ->with('country_data', $country_data);
+        // ->with('news_data', $news_data);
 
     }
 

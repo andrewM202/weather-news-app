@@ -137,6 +137,22 @@ main {
   margin: 50px 25px 100px 25px;
   border-bottom: 4px solid gray;
 }
+.weather-section .country-content h4 {
+  color: white;
+  text-align: center;
+  padding: 25px 0;
+  font-size: 1.9rem;
+}
+.weather-section .country-content ul {
+  width: 100%;
+  max-width: 100vw;
+  padding: 0 50px 50px 50px;
+}
+.weather-section .country-content ul li {
+  width: 100%;
+  height: 50px;
+  font-size: 1.3rem;
+}
 .weather-section .weather-content {
   width: 600px;
   max-width: 100vw;
