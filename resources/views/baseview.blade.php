@@ -89,13 +89,13 @@
         </section>
         <section class="divider">
             <div class="divider-box">
-                <img src="{{ url('img/thunderstorm.jpg') }}"></img>
+                <img src="{{ url('/img/thunderstorm.jpg') }}"></img>
             </div>
             <div class="divider-box">
-                <img src="{!! $country_flag ?? '#' !!}"></img>
+                <img src="{{ $country_flag ?? '#' }}"></img>
             </div>
             <div class="divider-box">
-                <img src="{!! url('img/sunny.jpg') !!}"></img>
+                <img src="{{ url('/img/sunny.jpg') }}"></img>
             </div>
         </section>
         <section class="container-fluid containers">
