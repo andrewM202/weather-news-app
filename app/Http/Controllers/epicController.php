@@ -41,7 +41,7 @@ class epicController extends Controller
             'feels' => "Feels Like: ".(string)$weather_data_raw['main']['feels_like']." Fahrenheit",
             'humidity' => "Humidity: ".(string)$weather_data_raw['main']['humidity']."%",
             'wind_speed' => "Wind Speed: ".$weather_data_raw['wind']['speed']." m/h",
-            'pressure' => "Pressure: ".(string)$weather_data_raw['main']['pressure']." hPa",
+            'pressure' => "Pressure: ".(string)number_format($weather_data_raw['main']['pressure'])." hPa",
             'weather_desc' => "Weather: ".ucwords($weather_data_raw['weather']['0']['description'], ' '),
             'sunset' => "Sunset: ".date("g:i:s A", $weather_data_raw['sys']['sunset']+$hours_to_adjust),
             'sunrise' => "Sunrise: ".date("g:i:s A", $weather_data_raw['sys']['sunrise']+$hours_to_adjust),
@@ -114,7 +114,7 @@ class epicController extends Controller
             'country_capital' => 'Capital City: '.$country_api_url['capital'],
             'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
             'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
-            'country_population' => 'Population: '.$country_api_url['population'],
+            'country_population' => 'Population: '.number_format($country_api_url['population']),
             'country_region' => 'Region: '.$country_api_url['region'],
             'country_regional_block' => 'Regional Block: '.$country_api_url['regionalBlocs']['0']['acronym']
         ];
@@ -191,7 +191,7 @@ class epicController extends Controller
             'feels' => "Feels Like: ".(string)$weather_data_raw['main']['feels_like']." Fahrenheit",
             'humidity' => "Humidity: ".(string)$weather_data_raw['main']['humidity']."%",
             'wind_speed' => "Wind Speed: ".$weather_data_raw['wind']['speed']." mph",
-            'pressure' => "Pressure: ".(string)$weather_data_raw['main']['pressure']." hPa",
+            'pressure' => "Pressure: ".(string)number_format($weather_data_raw['main']['pressure'])." hPa",
             'weather_desc' => "Weather: ".ucwords($weather_data_raw['weather']['0']['description'], ' '),
             'sunset' => "Sunset: ".date("g:i:s A", $weather_data_raw['sys']['sunset']+$hours_to_adjust),
             'sunrise' => "Sunrise: ".date("g:i:s A", $weather_data_raw['sys']['sunrise']+$hours_to_adjust),
@@ -262,7 +262,7 @@ class epicController extends Controller
                 'country_capital' => 'Capital City: '.$country_api_url['capital'],
                 'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
                 'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
-                'country_population' => 'Population: '.$country_api_url['population'],
+                'country_population' => 'Population: '.number_format($country_api_url['population']),
                 'country_region' => 'Region: '.$country_api_url['region'],
                 'country_regional_block' => 'Regional Block: '.$country_api_url['regionalBlocs']['0']['acronym']
             ];
