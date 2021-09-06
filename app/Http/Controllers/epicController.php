@@ -105,7 +105,7 @@ class epicController extends Controller
             ];
         }
 
-        // $news_data = populate_news($weather_data_raw);
+        $news_data = populate_news($weather_data_raw);
 
         // rescountries.eu API call
         $country = $weather_data_raw['sys']['country'];
@@ -150,7 +150,7 @@ class epicController extends Controller
         ->with('country_data', $country_data)
         ->with('country_name', $country_name)
         ->with('country_flag', $country_flag)
-        // ->with('news_data', $news_data)
+        ->with('news_data', $news_data)
         ->with('pollution_data', $pollution_data);
     }
 
