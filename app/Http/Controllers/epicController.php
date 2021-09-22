@@ -109,7 +109,7 @@ class epicController extends Controller
 
         // rescountries.eu API call
         $country = $weather_data_raw['sys']['country'];
-        $country_api_url = json_decode(file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$country), true);
+        $country_api_url = json_decode(@file_get_contents('http://restcountries.eu/rest/v2/alpha/'.$country), true);
         $country_data = [
             'country_capital' => 'Capital City: '.$country_api_url['capital'],
             'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
