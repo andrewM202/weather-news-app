@@ -109,17 +109,17 @@ class epicController extends Controller
 
         // rescountries.eu API call
         $country = $weather_data_raw['sys']['country'];
-        $country_api_url = json_decode(@file_get_contents('http://restcountries.eu/rest/v2/alpha/'.$country), true);
+        $country_api_url = json_decode(@file_get_contents('http://restcountries.com/v3/alpha/'.$country), true);
         $country_data = [
-            'country_capital' => 'Capital City: '.$country_api_url['capital'],
-            'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
-            'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
-            'country_population' => 'Population: '.number_format($country_api_url['population']),
-            'country_region' => 'Region: '.$country_api_url['region'],
-            'country_regional_block' => 'Regional Block: '.$country_api_url['regionalBlocs']['0']['acronym']
+            'country_capital' => 'Capital City: '.$country_api_url['0']['capital']['0'],
+            'country_language' => 'Language: '.$country_api_url['0']['languages']['eng'],
+            'country_currency' => 'Currency: '.$country_api_url['0']['currencies']['USD']['name'],
+            'country_region' => 'Region: '.$country_api_url['0']['region'],
+            'country_un_member' => 'UN Member: '.($country_api_url['0']['unMember'] ? 'Yes' : 'No'),
+            'country_independent' => 'Independent: '.($country_api_url['0']['independent'] ? 'Yes' : 'No')
         ];
-        $country_name = 'Country: '.$country_api_url['name'];
-        $country_flag = $country_api_url['flag'];
+        $country_name = 'Country: '.$country_api_url['0']['name']['common'];
+        $country_flag = $country_api_url['0']['flags']['0'];
 
         // air pollution API call using weather api key
         $pollution_api_url = 'http://api.openweathermap.org/data/2.5/air_pollution?lat='.$lat.'&lon='.$lon.'&appid='.$weather_api_key;
@@ -256,29 +256,29 @@ class epicController extends Controller
 
         // rescountries.eu API call
         $country = $weather_data_raw['sys']['country'];
-        $country_api_url = json_decode(file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$country), true);
+        $country_api_url = json_decode(@file_get_contents('http://restcountries.com/v3/alpha/'.$country), true);
         try {
             $country_data = [
-                'country_capital' => 'Capital City: '.$country_api_url['capital'],
-                'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
-                'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
-                'country_population' => 'Population: '.number_format($country_api_url['population']),
-                'country_region' => 'Region: '.$country_api_url['region'],
-                'country_regional_block' => 'Regional Block: '.$country_api_url['regionalBlocs']['0']['acronym']
+                'country_capital' => 'Capital City: '.$country_api_url['0']['capital']['0'],
+                'country_language' => 'Language: '.$country_api_url['0']['languages']['eng'],
+                'country_currency' => 'Currency: '.$country_api_url['0']['currencies']['USD']['name'],
+                'country_region' => 'Region: '.$country_api_url['0']['region'],
+                'country_un_member' => 'UN Member: '.($country_api_url['0']['unMember'] ? 'Yes' : 'No'),
+                'country_independent' => 'Independent: '.($country_api_url['0']['independent'] ? 'Yes' : 'No')
             ];
         } catch (\Throwable $e) {
             $country_data = [
-                'country_capital' => 'Capital City: '.$country_api_url['capital'],
-                'country_language' => 'Language: '.$country_api_url['languages']['0']['name'],
-                'country_currency' => 'Currency: '.$country_api_url['currencies']['0']['code'],
-                'country_population' => 'Population: '.$country_api_url['population'],
-                'country_region' => 'Region: '.$country_api_url['region'],
-                'country_regional_block' => 'Regional Block: None'
+                'country_capital' => 'Capital City: '.$country_api_url['0']['capital']['0'],
+                'country_language' => 'Language: '.$country_api_url['0']['languages']['eng'],
+                'country_currency' => 'Currency: Invalid',
+                'country_region' => 'Region: '.$country_api_url['0']['region'],
+                'country_un_member' => 'UN Member: '.($country_api_url['0']['unMember'] ? 'Yes' : 'No'),
+                'country_independent' => 'Independent: '.($country_api_url['0']['independent'] ? 'Yes' : 'No')
             ];
         }
        
-        $country_name = 'Country: '.$country_api_url['name'];
-        $country_flag = $country_api_url['flag'];
+        $country_name = 'Country: '.$country_api_url['0']['name']['common'];
+        $country_flag = $country_api_url['0']['flags']['0'];
 
         // air pollution API call using weather api key
         $pollution_api_url = 'http://api.openweathermap.org/data/2.5/air_pollution?lat='.$lat.'&lon='.$lon.'&appid='.$weather_api_key;

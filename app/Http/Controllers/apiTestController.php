@@ -40,7 +40,7 @@ class apiTestController extends Controller
 
     public function restCountryData() {
         $country = 'us';
-        $country_api_raw = json_decode(file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$country), true);
+        $country_api_raw = json_decode(file_get_contents('https://restcountries.com/v3/alpha/'.$country), true);
         return '<pre>'.print_r($country_api_raw, true).'</pre>';   
     }
 
